@@ -1,0 +1,236 @@
+:root {
+  --ink: #3c332b;
+  --note-bg: #fff4b8;
+  --note-edge: #efdc8a;
+  --tape: rgba(236, 206, 120, 0.62);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+  color: var(--ink);
+  font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: var(--note-bg);
+}
+
+.sheet {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.42), transparent 26%),
+    var(--note-bg);
+  border: 1px solid var(--note-edge);
+}
+
+.tape {
+  position: absolute;
+  top: 7px;
+  left: 50%;
+  z-index: 2;
+  width: 84px;
+  height: 18px;
+  background: var(--tape);
+  border-left: 1px dashed rgba(255, 255, 255, 0.55);
+  border-right: 1px dashed rgba(255, 255, 255, 0.55);
+  border-radius: 1px;
+  box-shadow: 0 2px 4px rgba(90, 60, 30, 0.08);
+  transform: translateX(-50%) rotate(-1.5deg);
+  pointer-events: none;
+}
+
+.bar {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: 8px;
+  height: 42px;
+  padding: 8px 8px 0 14px;
+  cursor: grab;
+  user-select: none;
+}
+
+.bar:active {
+  cursor: grabbing;
+}
+
+.pin {
+  width: 9px;
+  height: 9px;
+  background: #d95757;
+  border: 1px solid #bf4141;
+  border-radius: 50%;
+  box-shadow: 0 1px 2px rgba(140, 30, 30, 0.3);
+}
+
+.title {
+  font-size: 13px;
+  font-weight: 650;
+  letter-spacing: 0.06em;
+  color: rgba(60, 50, 35, 0.72);
+}
+
+.hint {
+  max-width: 150px;
+  margin-right: 4px;
+  margin-left: auto;
+  padding: 2px 6px;
+  overflow: hidden;
+  color: rgba(70, 55, 40, 0.38);
+  font-family: inherit;
+  font-size: 10px;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  background: transparent;
+  border: 1px dashed transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: color 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+}
+
+.hint:hover {
+  color: #7a5a12;
+  background: rgba(255, 255, 255, 0.5);
+  border-color: rgba(122, 90, 18, 0.45);
+}
+
+.hint:focus-visible {
+  outline: 2px solid rgba(122, 90, 18, 0.5);
+  outline-offset: 1px;
+}
+
+.hint.capturing {
+  color: #a63737;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.72);
+  border-color: rgba(166, 55, 55, 0.55);
+}
+
+.icon-btn {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  color: rgba(60, 50, 35, 0.58);
+  font-size: 18px;
+  line-height: 1;
+  background: rgba(255, 255, 255, 0.45);
+  border: 1px solid rgba(60, 50, 35, 0.16);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.icon-btn:hover {
+  color: #7a5a12;
+  background: #fff;
+}
+
+.content {
+  flex: 1;
+  width: 100%;
+  min-height: 0;
+  padding: 6px 18px 4px;
+  color: #3d3329;
+  font-family: "KaiTi", "Kaiti SC", "STKaiti", "Segoe Print", "Microsoft YaHei", sans-serif;
+  font-size: 16px;
+  line-height: 30px;
+  caret-color: #b4552d;
+  background-color: transparent;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0 29px,
+    rgba(90, 70, 45, 0.075) 29px 30px
+  );
+  background-attachment: local;
+  border: 0;
+  outline: 0;
+  resize: none;
+}
+
+.content::placeholder {
+  color: rgba(80, 65, 45, 0.3);
+}
+
+.content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.content::-webkit-scrollbar-thumb {
+  background: rgba(90, 70, 45, 0.18);
+  border-radius: 999px;
+}
+
+.foot {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 0 14px 8px;
+  color: rgba(70, 55, 40, 0.42);
+  font-size: 10px;
+  letter-spacing: 0.03em;
+}
+
+.status {
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.status.saving {
+  color: rgba(150, 105, 30, 0.7);
+}
+
+.foot-actions {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: 2px;
+}
+
+.text-btn {
+  padding: 2px 6px;
+  color: rgba(70, 55, 40, 0.46);
+  font-size: 10px;
+  background: transparent;
+  border: 0;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.text-btn:hover {
+  color: #a63737;
+  background: rgba(255, 255, 255, 0.45);
+}
+
+.text-btn.save {
+  color: #7a5a12;
+  font-weight: 600;
+}
+
+.text-btn.save:hover {
+  color: #5c430a;
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.text-btn.danger {
+  color: #a63737;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.55);
+}

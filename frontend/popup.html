@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>快捷便签</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <main class="sheet">
+    <div class="tape" aria-hidden="true"></div>
+    <header class="bar" data-tauri-drag-region>
+      <span class="pin" data-tauri-drag-region aria-hidden="true"></span>
+      <span class="title" data-tauri-drag-region>快捷便签</span>
+      <button id="shortcut" class="hint" type="button" title="点击更换快捷键" aria-label="更换打开便签的快捷键">Ctrl+Alt+Space</button>
+      <button id="close" class="icon-btn" type="button" title="隐藏（内容保留）" aria-label="隐藏便签，内容保留">–</button>
+    </header>
+    <textarea id="content" class="content" placeholder="想到什么，先写下来..." spellcheck="false" aria-label="快捷便签内容"></textarea>
+    <footer class="foot">
+      <span id="status" class="status">Esc 隐藏 · 内容会保留</span>
+      <div class="foot-actions">
+        <button id="save" class="text-btn save" type="button" title="保存为 txt 文件（Ctrl+S）">保存到本地</button>
+        <button id="clear" class="text-btn" type="button" title="丢弃这张便签的内容（需二次确认）">丢弃</button>
+      </div>
+    </footer>
+  </main>
+  <script src="popup.js"></script>
+</body>
+</html>

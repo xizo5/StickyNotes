@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>便签墙 · 拖拽、换色、自动保存</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <header class="toolbar">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <div>
+          <h1>便签墙</h1>
+          <p class="subtitle">双击空白处贴一张，拖顶部挪位置</p>
+        </div>
+      </div>
+      <div class="tools">
+        <label class="search">
+          <span class="sr-only">搜索便签</span>
+          <input id="search" type="search" placeholder="搜索便签..." autocomplete="off">
+        </label>
+        <button id="quick-note" class="btn btn-accent" type="button" title="弹出快捷便签（Ctrl+Alt+Space）">弹出便签</button>
+        <button id="new-note" class="btn btn-primary" type="button">新建便签</button>
+        <button id="clear-board" class="btn btn-ghost" type="button">清空</button>
+      </div>
+    </header>
+
+    <main id="board" class="board" aria-label="便签墙">
+      <div id="empty-hint" class="empty-hint">
+        <p class="empty-title" id="empty-title">这里还空着</p>
+        <p id="empty-desc">双击任意空白处，写下第一张便签</p>
+        <p class="empty-kbd">也可以按 <kbd>N</kbd> 新建，<kbd>Ctrl</kbd> + <kbd>Enter</kbd> 也行</p>
+      </div>
+    </main>
+  </div>
+
+  <template id="note-template">
+    <article class="note">
+      <div class="note-tape" aria-hidden="true"></div>
+      <header class="note-head">
+        <span class="grip" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span>
+        <div class="note-actions">
+          <button class="note-btn pin" type="button" title="置顶 / 取消置顶" aria-label="置顶或取消置顶"></button>
+          <button class="note-btn color" type="button" title="换个颜色" aria-label="换个颜色"></button>
+          <button class="note-btn remove" type="button" title="删除便签" aria-label="删除便签">×</button>
+        </div>
+      </header>
+      <textarea class="note-text" placeholder="写点什么..." spellcheck="false" aria-label="便签内容"></textarea>
+      <footer class="note-foot"><span class="note-time"></span></footer>
+    </article>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>

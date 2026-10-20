@@ -1,0 +1,13 @@
+[package]
+name = "sticky-notes"
+version = "0.4.0"
+description = "A desktop sticky notes wall"
+edition = "2021"
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = ["tray-icon"] }
+tauri-plugin-dialog = "2"
+tauri-plugin-global-shortcut = "2"
